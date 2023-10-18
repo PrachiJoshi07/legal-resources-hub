@@ -11,18 +11,19 @@
     />
   </head>
   <body>
-    <form id="consultation_form" class="book-consultation" action="./bookconsultation.php" method="post" >
+    <form
+      id="consultation_form"
+      class="book-consultation"
+      action="./bookconsultation.php"
+      method="post"
+    >
       <div class="main-background-box"></div>
       <div class="legal-resources-hub">LEGAL RESOURCES HUB</div>
-
-
-
-
 
       <div class="home-glossary-box"></div>
       <div class="login">login</div>
       <a class="login" href="userlogin.html">Login</a>
-      
+
       <div class="about-us">About us</div>
       <div class="glossary">Glossary</div>
       <div class="home">Home</div>
@@ -31,16 +32,15 @@
       <a class="about-us" href="aboutus.html">About us</a>
       <a class="home" href="index.html">Home</a>
 
-
-
-
-
-
-
+      <input type="hidden" name="lawyer_id" id="lawyer_id" value="" />
 
       <img class="image-46-icon" alt="" src="./images/hammer.jpeg" />
 
-      <img class="image-box-icon" alt="" src="./images/Rectangle 4book consultation.png" />
+      <img
+        class="image-box-icon"
+        alt=""
+        src="./images/Rectangle 4book consultation.png"
+      />
 
       <input
         class="client-name-box"
@@ -109,7 +109,9 @@
       />
 
       <button class="book-consultation-finam-button"></button>
-      <div class="book-consultation1" onclick="submit_form();">Book Consultation</div>
+      <div class="book-consultation1" onclick="submit_form();">
+        Book Consultation
+      </div>
       <input
         class="pincode-box"
         name="pincode"
@@ -132,11 +134,14 @@
         Note- confirmation of your appointment is sent to your email in 2 hours.
       </div>
     </form>
-    
   </body>
 </html>
 <script>
-  function submit_form(){
+  let url = window.location.href;
+  let params = new URL(url).searchParams;
+  let lawyer_id = params.get("id");
+  document.getElementById("lawyer_id").value = lawyer_id;
+  function submit_form() {
     document.getElementById("consultation_form").submit();
   }
 </script>
