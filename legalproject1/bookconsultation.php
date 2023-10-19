@@ -59,7 +59,7 @@ if (!empty($_POST)) {
 
         //Recipients
         $mail->IsHTML(true);
-        $mail->AddAddress("omadityajain@gmail.com");
+        $mail->AddAddress($row['email']);
         $mail->SetFrom("jainomaditya@gmail.com", "Legal Resources Hub");
         $mail->Subject = "Consultation Booking Request";
         $content = "<b>Dear " . $row['full_name'] . "</b><br>
