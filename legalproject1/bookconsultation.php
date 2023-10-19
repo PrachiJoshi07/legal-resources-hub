@@ -52,8 +52,8 @@ if(!empty($_POST)){
     //     $mail->SMTPSecure = "tls";
     //     $mail->Port       = 587;
     //     $mail->Host       = "smtp.gmail.com";
-    //     $mail->Username   = "0808io201033.ies@ipsacademy.org";
-    //     $mail->Password   = "aditya123@";                                  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    //     $mail->Username   = "";
+    //     $mail->Password   = "";                                  //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //     //Recipients
     //     $mail->IsHTML(true);
