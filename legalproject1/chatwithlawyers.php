@@ -1,4 +1,4 @@
-<?php 
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,120 +7,146 @@ $database = "legal";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-$sql = "SELECT * FROM `new_lawyer_registration_form`";
+if (!empty($_GET['search'])) {
+  $search = $_GET['search'];
+  $sql = "SELECT * FROM `new_lawyer_registration_form` WHERE `Location` LIKE '%$search%' || `full_name` LIKE '%$search%' || `practice_areas` LIKE '%$search%' || `organisation` LIKE '%$search%' ";
+} else {
+  $sql = "SELECT * FROM `new_lawyer_registration_form`";
+}
+
 $result = $conn->query($sql);
 
 ?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    <link rel="stylesheet" href="./chatwithlawyer.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Mogra:wght@400&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Microsoft Sans Serif:wght@400&display=swap"
-    />
-    <style>
-      .lawyers{
-        margin-top:150px;
-        width: 100vw;
-        display: grid;
-        grid-template-columns: auto auto;
-        place-items: center;
-        
-      }
-      .lawyer-div {
-        position: relative;
-        border-radius: var(--br-xl);
-        background-color: var(--color-whitesmoke);
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-        width: 600px;
-        height: 160px;
-        padding: 2rem 0rem 0rem 1.5rem;
-        display: flex;        
-        margin: 0;
-        margin-bottom: 5rem;
-      }
-      .lawyer-img-div {
-        border:1px solid #5b2c2c;
-        border-radius: 50%;        
-        width: 81px;
-        height: 76px;
-        margin-right: 2rem;
-      }
-      .lawyer-img-div img{
-        height: 100%;
-        width: 100%;
-        object-fit:fill;
-      }
-      .lawyer-body {        
-        height: 100%;
-        margin-top: 10px;
-        width:calc(100% - 130px);
-      }
-      .lawyer-body h6 {
-        font-size: 22px;
-        font-weight: 500;
-        font-family: var(--font-mogra);
-        margin: 0;
-        margin-bottom: 5px;
-      }
-      .lawyer-body p {
-        margin: 0;
-        font-size: 16px;
-        font-family: var(--font-microsoft-sans-serif);
-        text-transform:capitalize;
-        line-height:20px;
-      }
-      .book-button {
-        position: absolute;
-        top: calc(100% - 75px);
-        left:40%;
-        border: 1px solid var(--color-maroon);
-        border-radius: var(--br-xl);
-        background-color: var(--color-snow);
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-        width: 259px;
-        height: 47px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 25px;
-        font-weight: 500;
-        font-family: var(--font-mogra);
-      }
-      .book-button a {
-        color: black;
-        text-decoration: none;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="legal-experts">
-      <div class="legal-resources-hub">LEGAL RESOURCES HUB</div>
-      <div class="legal-experts-child"></div>
-      <div class="glossary">Glossary</div>
-      <div class="about-us">About us</div>
-      <div class="login">Login</div>
-      <a class="login" href="userlogin.html">Login</a>
-      <div class="home">Home</div>
-      <a class="glossary" href="glossary.html">Glossary</a>
-      <a class="about-us" href="aboutus.html">About us</a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-      <a class="home" href="index.html">Home</a>
+  <link rel="stylesheet" href="./chatwithlawyer.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mogra:wght@400&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Microsoft Sans Serif:wght@400&display=swap" />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <style>
+    .lawyers {
+      margin-top: 150px;
+      width: 100vw;
+      display: grid;
+      grid-template-columns: auto auto;
+      place-items: center;
 
-      <img class="image-46-icon" alt="" src="./images/hammer.jpeg" />
+    }
 
-      <!-- <div class="legal-experts-item"></div>
+    .lawyer-div {
+      position: relative;
+      border-radius: var(--br-xl);
+      background-color: var(--color-whitesmoke);
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      width: 600px;
+      height: 160px;
+      padding: 2rem 0rem 0rem 1.5rem;
+      display: flex;
+      margin: 0;
+      margin-bottom: 5rem;
+    }
+
+    .lawyer-img-div {
+      border: 1px solid #5b2c2c;
+      border-radius: 50%;
+      width: 81px;
+      height: 76px;
+      margin-right: 2rem;
+    }
+
+    .lawyer-img-div img {
+      height: 100%;
+      width: 100%;
+      object-fit: fill;
+    }
+
+    .lawyer-body {
+      height: 100%;
+      margin-top: 10px;
+      width: calc(100% - 130px);
+    }
+
+    .lawyer-body h6 {
+      font-size: 22px;
+      font-weight: 500;
+      font-family: var(--font-mogra);
+      margin: 0;
+      margin-bottom: 5px;
+    }
+
+    .lawyer-body p {
+      margin: 0;
+      font-size: 16px;
+      font-family: var(--font-microsoft-sans-serif);
+      text-transform: capitalize;
+      line-height: 20px;
+    }
+
+    .book-button {
+      position: absolute;
+      top: calc(100% - 75px);
+      left: 40%;
+      border: 1px solid var(--color-maroon);
+      border-radius: var(--br-xl);
+      background-color: var(--color-snow);
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      width: 259px;
+      height: 47px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      font-weight: 500;
+      font-family: var(--font-mogra);
+    }
+
+    .book-button a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .alert {
+      height: 60px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="legal-experts">
+    <div class="legal-resources-hub">LEGAL RESOURCES HUB</div>
+    <div class="legal-experts-child"></div>
+    <div class="glossary">Glossary</div>
+    <div class="about-us">About us</div>
+    <div class="login">Login</div>
+    <a class="login" href="userlogin.html">Login</a>
+    <div class="home">Home</div>
+    <a class="glossary" href="glossary.html">Glossary</a>
+    <a class="about-us" href="aboutus.html">About us</a>
+
+    <a class="home" href="index.html">Home</a>
+
+    <img class="image-46-icon" alt="" src="./images/hammer.jpeg" />
+
+    <!-- <div class="legal-experts-item"></div>
       <img class="legal-experts-inner" alt="" src="./images/color img.png" /> -->
 
-      <!-- <a
+    <!-- <a
         class="advocate-shubham-borkar-container"
         href="https://www.linkedin.com/in/shubhamborkar/overlay/about-this-profile/"
         target="_blank"
@@ -329,27 +355,39 @@ $result = $conn->query($sql);
       <div class="img-9"></div>
     </div> -->
 
-    <div class="lawyers">
-      
-    <?php  if (mysqli_num_rows($result) > 0) {
-             while($row = mysqli_fetch_assoc($result)) {
-    // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-   ?>
-    <div class="lawyer-div">
-        <div class="lawyer-img-div">
-          <img src="./images/Ellipse 13ayushi.png" alt="profile image">
-        </div>
-        <div class="lawyer-body">
-          <h6><?php echo $row['full_name']; ?></h6>
-          <p><?php echo $row['Location']; ?></p>
-          <p>Exp - <?php echo $row['experience_in_areas'] ?> Years</p>
-          <div class="book-button">
-            <a href="./bookconsultation.html?id=<?php echo $row['id']; ?>">Book Consultation</a>
-          </div>
-        </div>
+    <?php if (!empty($_GET['success']) && $_GET['success'] == "true") { ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Congratulations!</strong> Your Consultation Booking request sent successfully...
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    <?php } } ?>
+    <?php } ?>
+
+    <div class="lawyers">
+
+      <?php if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+          ?>
+          <div class="lawyer-div">
+            <div class="lawyer-img-div">
+              <img src="./images/Ellipse 13ayushi.png" alt="profile image">
+            </div>
+            <div class="lawyer-body">
+              <h6><?php echo $row['full_name']; ?></h6>
+              <p><?php echo $row['Location']; ?></p>
+              <p><?php echo $row['practice_areas']; ?></p>
+              <p>Exp - <?php echo $row['experience_in_areas'] ?> Years</p>
+              <div class="book-button">
+                <a href="./bookconsultation.html?id=<?php echo $row['id']; ?>">Book Consultation</a>
+              </div>
+            </div>
+          </div>
+        <?php }
+      } ?>
 
     </div>
-  </body>
+</body>
+
 </html>
