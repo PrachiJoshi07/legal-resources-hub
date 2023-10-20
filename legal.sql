@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2023 at 11:30 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Oct 20, 2023 at 09:30 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,16 +41,16 @@ CREATE TABLE `book_consultation` (
   `problem_description` mediumtext NOT NULL,
   `user_id` int(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `book_consultation`
 --
 
 INSERT INTO `book_consultation` (`id`, `client_name`, `email`, `state`, `city`, `pincode`, `address`, `day`, `datetime`, `legal_domain`, `problem_description`, `user_id`, `timestamp`) VALUES
-(1, 'Om Aditya Jain', 'omadityajain@gmail.com', 'MP', 'Indore', 6598526, 'Dwarkapuri', 'Tuesday', '2023-10-17 12:29:00', 'Insurance Claim', 'This is a testing description', 1, '2023-10-17 06:59:31'),
-(2, 'Prachi Joshi', 'prachij07pj@gmail.com', 'Madhya Pradesh', 'Neemuch', 458441, '101 bholaram compound near fashion impex shop', '', '0000-00-00 00:00:00', 'sadf', 'adsfdf', 1, '2023-10-18 05:01:44'),
-(3, 'Prachi Joshi', 'prachij07pj@gmail.com', 'Madhya Pradesh', 'Neemuch', 458441, '101 bholaram compound near fashion impex shop', 'TYGYG', '2023-10-18 14:01:00', 'DFDF', 'FDFD', 1, '2023-10-18 08:31:40');
+(1, 'Om Aditya Jain', 'omadityajain@gmail.com', 'MP', 'Indore', 452009, 'indore', 'Friday', '2023-10-20 12:59:00', 'civil', 'asdfasdf', 1, '2023-10-20 07:29:44'),
+(2, 'Om Aditya Jain', 'omadityajain@gmail.com', 'MP', 'Indore', 452009, 'indore', 'Friday', '2023-10-20 12:59:00', 'civil', 'asdfasdf', 1, '2023-10-20 07:29:47'),
+(3, 'Om Aditya Jain', 'omadityajain@gmail.com', 'MP', 'Indore', 452009, 'indore', 'Friday', '2023-10-20 12:59:00', 'civil', 'asdfasdf', 1, '2023-10-20 07:29:50');
 
 -- --------------------------------------------------------
 
@@ -62,22 +62,15 @@ CREATE TABLE `lawyer_login` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `lawyer_login`
 --
 
 INSERT INTO `lawyer_login` (`id`, `username`, `password`) VALUES
-(1, 'test', 'ceb6c970658f31504a901b89dcd3e461'),
-(2, 'prachij07pj@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-(3, 'prachij07pj@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-(4, 'johndoe123@example.com', '202cb962ac59075b964b07152d234b70'),
-(5, 'sarah.smith99@gmail.com', '202cb962ac59075b964b07152d234b70'),
-(6, 'aryan.gupta@example.com', '202cb962ac59075b964b07152d234b70'),
-(7, 'priya.sharma@example.com', '202cb962ac59075b964b07152d234b70'),
-(8, 'rajesh.patel@example.com', '202cb962ac59075b964b07152d234b70'),
-(9, 'anjali.reddy@example.com', '202cb962ac59075b964b07152d234b70');
+(1, 'prachiji07@gmail.com', '202cb962ac59075b964b07152d234b70'),
+(2, 'prachiji07@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
@@ -104,7 +97,7 @@ CREATE TABLE `lawyer_registration` (
   `About_me` text NOT NULL,
   `Create_password` varchar(255) NOT NULL,
   `Confirm_password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -117,7 +110,7 @@ CREATE TABLE `login` (
   `username` varchar(1000) NOT NULL,
   `password` varchar(1000) NOT NULL,
   `active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -135,22 +128,17 @@ CREATE TABLE `new_lawyer_registration_form` (
   `organisation` varchar(255) NOT NULL,
   `create_password` varchar(18) NOT NULL,
   `confirm_password` varchar(18) NOT NULL,
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id` int(11) NOT NULL,
+  `profile_image` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `new_lawyer_registration_form`
 --
 
-INSERT INTO `new_lawyer_registration_form` (`full_name`, `email`, `Location`, `phone_number`, `experience_in_areas`, `practice_areas`, `organisation`, `create_password`, `confirm_password`, `id`) VALUES
-('Prachi Joshi', 'prachij07pj@gmail.com', 'indore', 127, '9', 'criminal', 'high court', '81dc9bdb52d04dc200', '3456', 1),
-('Prachi Joshi', 'prachij07pj@gmail.com', 'indore', 127, '9', 'criminal', 'high court', '81dc9bdb52d04dc200', '3456', 2),
-('Advocate Shubham Borkar', 'johndoe123@example.com', 'Pune, Maharashtra, India', 0, '7 YEARS', 'criminal', 'high court', '202cb962ac59075b96', '123', 3),
-('Emma Johnson', 'sarah.smith99@gmail.com', 'gujrat', 0, '5', 'civil law', 'supreme court', '202cb962ac59075b96', '123', 4),
-('Aryan Gupta', 'aryan.gupta@example.com', 'Mumbai, Maharashtra', 91, '8', ' Criminal, Family', 'Gupta & Associates (High Court)', '202cb962ac59075b96', '123', 5),
-('Priya Sharma', 'priya.sharma@example.com', 'Delhi, Delhi', 91, '5', 'Civil, Corporate', 'Sharma Legal Services (Supreme Court)', '202cb962ac59075b96', '123', 6),
-('Rajesh Patel', 'rajesh.patel@example.com', 'Ahmedabad, Gujarat', 91, '10', 'Real Estate, Immigration', 'Patel Law Firm (High Court)', '202cb962ac59075b96', '123', 7),
-('Anjali Reddy', 'anjali.reddy@example.com', 'Hyderabad, Telangana', 91, '8', ' Intellectual Property, Tax', 'Reddy & Associates (Supreme Court)', '202cb962ac59075b96', '123', 8);
+INSERT INTO `new_lawyer_registration_form` (`full_name`, `email`, `Location`, `phone_number`, `experience_in_areas`, `practice_areas`, `organisation`, `create_password`, `confirm_password`, `id`, `profile_image`) VALUES
+('Advocate Shubham Borkar', 'prachiji07@gmail.com', 'Pune, Maharashtra', 127, '5', 'Civil', 'High Court', '202cb962ac59075b96', '456', 1, '1-37 advocate.png'),
+('Kushal Mor', 'prachiji07@gmail.com', 'Delhi, India', 127, '3', 'Insurance Claim', 'District Court', '202cb962ac59075b96', '123', 2, '2-Ellipse 18kushal.png');
 
 -- --------------------------------------------------------
 
@@ -162,7 +150,7 @@ CREATE TABLE `reply_to_experiences` (
   `id` int(11) NOT NULL,
   `case_id` int(255) NOT NULL,
   `reply` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -174,15 +162,7 @@ CREATE TABLE `share_experiences` (
   `id` int(11) NOT NULL,
   `case_title` varchar(255) NOT NULL,
   `case_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `share_experiences`
---
-
-INSERT INTO `share_experiences` (`id`, `case_title`, `case_description`) VALUES
-(1, 'Sfdaf', 'dfdf'),
-(2, 'VCV CV', 'VFGFG');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -194,15 +174,7 @@ CREATE TABLE `user_login` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user_login`
---
-
-INSERT INTO `user_login` (`id`, `username`, `password`) VALUES
-(1, 'user', 'ba5ef51294fea5cb4eadea5306f3ca3b'),
-(3, 'Prachi_Joshi', '202cb962ac59075b964b07152d234b70');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -214,15 +186,7 @@ CREATE TABLE `user_registration` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user_registration`
---
-
-INSERT INTO `user_registration` (`id`, `username`, `email`) VALUES
-(1, 'Prachi_Joshi', 'prachij07pj@gmail.com'),
-(2, 'Prachi_Joshi', 'prachij07pj@gmail.com');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -296,7 +260,7 @@ ALTER TABLE `book_consultation`
 -- AUTO_INCREMENT for table `lawyer_login`
 --
 ALTER TABLE `lawyer_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lawyer_registration`
@@ -314,19 +278,19 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `new_lawyer_registration_form`
 --
 ALTER TABLE `new_lawyer_registration_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `reply_to_experiences`
 --
 ALTER TABLE `reply_to_experiences`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `share_experiences`
 --
 ALTER TABLE `share_experiences`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_login`
