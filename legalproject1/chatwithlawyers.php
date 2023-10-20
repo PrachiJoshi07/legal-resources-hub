@@ -73,6 +73,7 @@ $result = $conn->query($sql);
       height: 100%;
       width: 100%;
       object-fit: fill;
+      border-radius: 50%;
     }
 
     .lawyer-body {
@@ -372,7 +373,7 @@ $result = $conn->query($sql);
           ?>
           <div class="lawyer-div">
             <div class="lawyer-img-div">
-              <img src="./images/Ellipse 13ayushi.png" alt="profile image">
+              <img src="./images/profile_images/<?php echo $row['profile_image']; ?>" alt="profile image">
             </div>
             <div class="lawyer-body">
               <h6><?php echo $row['full_name']; ?></h6>

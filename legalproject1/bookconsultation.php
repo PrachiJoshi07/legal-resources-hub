@@ -54,13 +54,13 @@ if (!empty($_POST)) {
         $mail->SMTPSecure = "tls";
         $mail->Port = 587;
         $mail->Host = "smtp.gmail.com";
-        $mail->Username = "jainomaditya@gmail.com";
-        $mail->Password = "qiix payo qrjd vrzk"; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->Username = "legalresourceshub@gmail.com";
+        $mail->Password = "uozn wzit mdoh ihjb"; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
         $mail->IsHTML(true);
         $mail->AddAddress($row['email']);
-        $mail->SetFrom("jainomaditya@gmail.com", "Legal Resources Hub");
+        $mail->SetFrom("legalresourceshub@gmail.com", "Legal Resources Hub");
         $mail->Subject = "Consultation Booking Request";
         $content = "<b>Dear " . $row['full_name'] . "</b><br>
         We are pleased to inform you that $name has requesting for booking a consultation with you.<br> 
